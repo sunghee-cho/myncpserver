@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- 
+모듈은 로컬 파일에서 동작하지 않고, HTTP 또는 HTTPS 프로토콜을 통해서만 동작합니다.
+로컬에서 file:// 프로토콜을 사용해 웹페이지를 열면 import, export 지시자가 동작하지 않습니다. 
+ -->
+<script type="module">
+import {sayHi} from './sayHi.js';
+
+alert(sayHi); // 함수
+sayHi('John'); // Hello, John!
+</script>
+</body>
+</html>

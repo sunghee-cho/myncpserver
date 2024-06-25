@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!-- 0. MYBATIS 기록 로그 CONSOLE LOG4J.JAR -->
+<!-- <settings>
+	<setting name="logImpl" value="LOG4J"/>
+</settings> -->
+
+<!-- 1. -->
+<typeAliases>
+	<typeAlias type="boardmapper.MemberDTO" alias="memberdto"/>
+	<typeAlias type="boardmapper.BoardDTO" alias="boarddto"/>
+</typeAliases>
+
+
+</configuration>
+
+
+
+
+

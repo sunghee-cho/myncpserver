@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="boardmapper.BoardDAO">
+<!-- title, contents, writer, pw -->
+<insert id="insertBoard" parameterType="boarddto">
+ insert into board values(null, #{title}, #{contents}, #{writer}, #{pw}, 0, now())
+</insert>
+
+<!-- int [] b = {0, 3} -->
+<select id="pagingBoardList" resultType="boarddto" >
+select * from board order by writingtime desc limit 
+<foreach collection="array" item="a"  separator=",">
+	#{a}
+</foreach>
+</select>
+
+<select id="totalCount" resultType="int">
+select count(*) from board
+</select>
+
+<update id="updateViewcount" parameterType="int">
+update board set viewcount = viewcount+1 where seq=#{seq}
+</update>
+
+<select id="getDetail" parameterType="int" resultType="boarddto">
+select * from board where seq=#{seq}
+</select>
+
+<delete id="deleteBoard"  parameterType="int">
+delete from board where seq=#{seq}
+</delete>
+
+<update id="updateBoard" parameterType="boarddto">
+update board set title=#{title} , contents=#{contents}, writingtime=now() where seq=#{seq}
+</update>
+
+<select id="searchTotalCount" resultType="int" parameterType="java.util.HashMap" >
+select count(*) from board where 
+<choose>
+<when test="colname != null">
+${colname} like #{colvalue}
+</when>
+<otherwise>
+title like #{colvalue} or contents like #{colvalue}  or writer like #{colvalue} 
+</otherwise>
+</choose> 
+</select>
+
+<select id="searchPagingBoardList" resultType="boarddto" parameterType="java.util.HashMap">
+select count(*) from board where 
+<choose>
+<when test="colname != null">
+${colname} like #{colvalue}
+</when>
+<otherwise>
+title like #{colvalue} or contents like #{colvalue}  or writer like #{colvalue} 
+</otherwise>
+</choose> 
+order by writingtime desc limit 
+<foreach collection="limit" item="a"  separator=",">
+	#{a}
+</foreach>
+</select>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
