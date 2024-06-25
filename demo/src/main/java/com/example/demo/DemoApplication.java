@@ -8,7 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan
 //@ComponentScan(basePackages={"errors","spring.mybatis.board"})
-//@ComponentScan(basePackages="upload")
+@ComponentScan(basePackages="upload")
 //@ComponentScan(basePackages = "websocket")
 
 @ComponentScan(basePackages = "boardmapper")
