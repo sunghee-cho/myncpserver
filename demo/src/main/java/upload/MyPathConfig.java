@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class MyPathConfig implements WebMvcConfigurer {
 @Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		registry.addResourceHandler("/upload/**").addResourceLocations("file:///c:/fullstack/upload/");
+		registry.addResourceHandler("/upload/**").addResourceLocations(UploadInform.uploadLocation);
 		//<resources mapping="/upload/**" location="file:///c:/kdt/upload/" /> : file:/kdt/upload
 	}
 
